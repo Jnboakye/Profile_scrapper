@@ -1,101 +1,226 @@
-import Image from "next/image";
+'use client';
+
+import Link    from 'next/link';
+import { useState, useEffect } from 'react';
+import { FaLinkedin, FaEnvelope, FaTwitter, FaClock, FaRocket, FaUsers, FaRobot } from 'react-icons/fa';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [hover, setHover] = useState(false);
+  const [showContent, setShowContent] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  useEffect(() => {
+    // Trigger fade and slide up after mount
+    setShowContent(true);
+  }, []);
+
+  const features = [
+    {
+      icon: <FaClock size={40} color="#7f79ed" />,
+      title: 'Save Time',
+      description: 'Get instant summaries and avoid hours of manual research.',
+    },
+    {
+      icon: <FaRocket size={40} color="#7f79ed" />,
+      title: 'Boost Productivity',
+      description: 'Help your sales and recruitment teams prepare faster.',
+    },
+    {
+      icon: <FaUsers size={40} color="#7f79ed" />,
+      title: 'Easy Collaboration',
+      description: 'Share insights quickly with your team via our chatbot.',
+    },
+    {
+      icon: <FaRobot size={40} color="#7f79ed" />,
+      title: 'AI Powered',
+      description: 'Leverages powerful AI to generate concise, relevant info.',
+    },
+  ];
+
+  return (
+    <div
+      style={{
+        minHeight: '100vh',
+        fontFamily: "'Poppins', sans-serif",
+        background:
+          'radial-gradient(circle at top left, #f0f4f8, transparent), radial-gradient(circle at bottom right, #d9e2ec, transparent)',
+        color: '#102a43',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '3rem 1rem',
+      }}
+    >
+      {/* Hero container */}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          maxWidth: '960px',
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '2rem',
+          marginBottom: '4rem',
+          flexWrap: 'wrap',
+        }}
+      >
+        {/* Text section */}
+        <div
+          style={{
+            flex: '1 1 400px',
+            minWidth: '280px',
+            opacity: showContent ? 1 : 0,
+            transform: showContent ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'opacity 0.8s ease, transform 0.8s ease',
+            transitionDelay: '0.2s',
+          }}
+        >
+          <h1
+            style={{
+              fontSize: '3rem',
+              fontWeight: 700,
+              marginBottom: '1rem',
+              lineHeight: 1.1,
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Welcome to Relevance AI Summarizer
+          </h1>
+
+          <p
+            style={{
+              fontSize: '1.25rem',
+              lineHeight: 1.6,
+              marginBottom: '2rem',
+              color: '#334e68',
+            }}
           >
-            Read our docs
-          </a>
+            Quickly get summarized insights about people or companies by scraping their LinkedIn or websites.
+            Perfect for sales teams, recruiters, or anyone who wants a quick overview.
+          </p>
+
+          <Link href="/bot" style={{ textDecoration: 'none' }}>
+            <button
+              style={{
+                padding: '1rem 2.5rem',
+                fontSize: '1.25rem',
+                fontWeight: '600',
+                backgroundColor: hover ? '#4239f7' : '#7f79ed',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                boxShadow: '0 4px 8px rgba(168, 129, 114, 0.4)',
+                transition: 'background-color 0.3s ease',
+              }}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
+              Try our bot
+            </button>
+          </Link>
+
+          <footer
+            style={{
+              marginTop: '3rem',
+              fontSize: '0.95rem',
+              color: '#627d98',
+            }}
+          >
+            <p>
+              Want a similar project?{' '}
+              <a
+                href="mailto:your.email@example.com"
+                style={{
+                  color: '#7f79ed',
+                  textDecoration: 'underline',
+                }}
+              >
+                Contact me
+              </a>
+            </p>
+          </footer>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        {/* Illustration */}
+        <div
+          style={{
+            flex: '1 1 400px',
+            minWidth: '280px',
+            textAlign: 'center',
+            opacity: showContent ? 1 : 0,
+            transform: showContent ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'opacity 0.8s ease, transform 0.8s ease',
+            transitionDelay: '0.4s',
+          }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+          <img
+            src="./images/image1.png"
+            alt="AI illustration"
+            style={{ maxWidth: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
+            loading="lazy"
           />
-          Learn
+        </div>
+      </div>
+
+
+      {/* Features section */}
+      <section
+        style={{
+          maxWidth: '960px',
+          width: '100%',
+          padding: '2rem 1rem',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '2rem',
+          marginBottom: '4rem',
+        }}
+      >
+        {features.map((feature, i) => (
+          <div
+            key={i}
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '2rem 1rem',
+              boxShadow: '0 6px 16px rgba(0,0,0,0.05)',
+              textAlign: 'center',
+              opacity: showContent ? 1 : 0,
+              transform: showContent ? 'translateY(0)' : 'translateY(20px)',
+              transition: `opacity 0.6s ease ${0.1 * i}s, transform 0.6s ease ${0.1 * i}s`,
+            }}
+          >
+            <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>{feature.icon}</div>
+            <h3
+              style={{
+                fontSize: '1.25rem',
+                fontWeight: '600',
+                marginBottom: '0.5rem',
+                color: '#334e68',
+              }}
+            >
+              {feature.title}
+            </h3>
+            <p style={{ color: '#627d98', fontSize: '1rem', lineHeight: 1.4 }}>{feature.description}</p>
+          </div>
+        ))}
+      </section>
+
+      {/* Footer */}
+      <footer
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '1.5rem',
+          fontSize: '1.5rem',
+          color: '#7f79ed',
+          marginBottom: '2rem',
+        }}
+      >
+        <a href="https://gh.linkedin.com/in/jeffrey-nana-boakye-634a4a241" target="_blank" rel="noreferrer" aria-label="LinkedIn" style={{ color: '#7f79ed' }}>
+          <FaLinkedin />
         </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
+        <a href="mailto:jeffreyboakye2131@outlook.com" aria-label="Email" style={{ color: '#7f79ed' }}>
+          <FaEnvelope />
         </a>
       </footer>
     </div>
