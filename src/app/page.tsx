@@ -129,7 +129,7 @@ export default function Home() {
             <p>
               Want a similar project?{' '}
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:jeffreyboakye2131@outlook.com"
                 style={{
                   color: '#7f79ed',
                   textDecoration: 'underline',
