@@ -36,10 +36,9 @@ export default function BotPage() {
           overflow: 'hidden',
         }}>
           <iframe
-            src="https://app.relevanceai.com/agents/d7b62b/b2abe964d2df-4ed5-bc10-a1ea93d25c0a/a3d9149a-bf68-4f95-bae4-15e0f29bb2a9/share?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=icon&primary_color=%23a88172&bubble_icon=pd%2Fsend-diagonal&input_placeholder_text=Type+your+message...&hide_logo=false&hide_description=false"
+            src="https://app.relevanceai.com/agents/d7b62b/b2abe964d2df-4ed5-bc10-a1ea93d25c0a/a3d9149a-bf68-4f95-bae4-15e0f29bb2a9/embed-chat?hide_tool_steps=false&hide_file_uploads=true&hide_conversation_list=false&bubble_style=icon&primary_color=%237f79ed&bubble_icon=pd%2Fsend-diagonal&input_placeholder_text=Enter+website+or+Linkedln+url...&hide_logo=false&hide_description=false"
             width="100%"
             height="100%"
-            frameBorder="0"
             style={{ border: 'none' }}
           ></iframe>
         </div>

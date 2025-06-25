@@ -83,7 +83,7 @@ export default function Home() {
               lineHeight: 1.1,
             }}
           >
-            Welcome to Relevance AI Summarizer
+            Welcome to ProfileBot AI Summerizer
           </h1>
 
           <p
