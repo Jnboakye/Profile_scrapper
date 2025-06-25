@@ -2,7 +2,7 @@
 
 import Link    from 'next/link';
 import { useState, useEffect } from 'react';
-import { FaLinkedin, FaEnvelope, FaTwitter, FaClock, FaRocket, FaUsers, FaRobot } from 'react-icons/fa';
+import { FaLinkedin, FaEnvelope, FaClock, FaRocket, FaUsers, FaRobot } from 'react-icons/fa';
 
 export default function Home() {
   const [hover, setHover] = useState(false);
